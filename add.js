@@ -1,6 +1,14 @@
-const myURL = new URL('https://example.org');
-myURL.pathname = '/a/b/c';
-myURL.search = '?d=e';
-myURL.hash = '#fgh'; 
+import express from 'express';
+import {testRouter} from './router.js';
 
-console.log(global.URL);
+const app = express();
+
+app.use("/", testRouter);
+
+const PORT = 3000;
+app.listen(PORT, (error) => {
+    if (error) {
+        throw error;
+    }
+    console.log(`My first Express app - listening on port ${PORT}!`);
+});
